@@ -4,6 +4,12 @@ on:
   issues:
     types: [opened]
 
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   run-agent:
     runs-on: ubuntu-latest
@@ -23,8 +29,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-<<<<<<< HEAD
+
         run: python agent.py
-=======
-        run: python agent.py
->>>>>>> a28e1ba (Add Gemini dev Agent)
