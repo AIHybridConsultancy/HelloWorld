@@ -17,6 +17,10 @@ on:
         required: true
         type: string
 
+permissions:
+  issues: write
+  contents: read
+
 jobs:
   run-agent:
     runs-on: ubuntu-latest
