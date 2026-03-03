@@ -23,4 +23,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+<<<<<<< HEAD
         run: python agent.py
+=======
+        run: python agent.py
+>>>>>>> a28e1ba (Add Gemini dev Agent)
