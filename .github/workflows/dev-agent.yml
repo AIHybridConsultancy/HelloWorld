@@ -42,3 +42,14 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
         run: python agent/agent.py
+        
+- name: Notify Success
+      if: success()
+      run: |
+        curl -X POST https://hook.eu1.make.com/pv8njiw3wjuudi9nkc4tuys9xqfhbvvq \
+        -H "Content-Type: application/json" \
+        -d '{
+          "issue_number": "${{ env.ISSUE_NUMBER }}",
+          "jira_key": "${{ env.JIRA_KEY }}",
+          "status": "done"
+        }'
