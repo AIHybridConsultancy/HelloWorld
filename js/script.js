@@ -1,6 +1,3 @@
-console.log('JavaScript file loaded successfully!');
-
-// You can add your JavaScript logic here.
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded and parsed');
-});
+// JavaScript for potential future enhancements.
+// Currently, no dynamic functionality is required for the global layout shell.
+console.log('Global layout shell loaded.');
