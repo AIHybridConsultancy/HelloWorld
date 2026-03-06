@@ -15,6 +15,18 @@ repo = g.get_repo(os.environ["GITHUB_REPOSITORY"])
 issue_number = int(os.environ["GITHUB_REF"].split("/")[-1]) if "issues" in os.environ.get("GITHUB_REF", "") else None
 issue = repo.get_issue(number=issue_number) if issue_number else repo.get_issues(state="open")[0]
 
+# 1. Get labels from the triggering issue
+# (Assuming 'issue' is already defined in your script via PyGithub)
+labels = [l.name for l in issue.get_labels()]
+
+# 2. Find the label that starts with "Jira:"
+jira_label = next((l for l in labels if l.startswith("Jira:")), "Jira:UNKNOWN")
+jira_key = jira_label.replace("Jira:", "")
+
+# 3. Pass it to the GitHub Action Output field
+with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+    print(f"jira_key={jira_key}", file=fh)
+
 # --- Enhanced Prompt ---
 prompt = f"""
 You are an autonomous Senior Web Developer Agent. 
