@@ -45,12 +45,11 @@ jobs:
         
       - name: Notify Success
         if: success()
-        env:
-          ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
         run: |
           curl -X POST https://hook.eu1.make.com/pv8njiw3wjuudi9nkc4tuys9xqfhbvvq \
           -H "Content-Type: application/json" \
           -d "{
-            \"issue_number\": \"${{ env.ISSUE_NUMBER }}\",
+            \"issue_number\": \"${{ github.event.issue.number || inputs.issue_number }}\",
+            \"jira_key\": \"${{ steps.agent_run.outputs.jira_key }}\",
             \"status\": \"done\"
           }"
