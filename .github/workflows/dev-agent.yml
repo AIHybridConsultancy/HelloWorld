@@ -43,7 +43,7 @@ jobs:
 
         run: python agent/agent.py
         
-- name: Notify Success
+name: Notify Success
       if: success()
       run: |
         curl -X POST https://hook.eu1.make.com/pv8njiw3wjuudi9nkc4tuys9xqfhbvvq \
